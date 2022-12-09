@@ -1,2 +1,5 @@
-# image-streamlit
-Cogniflow image classification app built using streamlit
+# Cogniflow Image Classification Demo using Streamlit
+
+Deploy using Streamlit Cloud
+
+
