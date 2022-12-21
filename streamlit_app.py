@@ -3,7 +3,7 @@ import base64
 from cogniflow_utils import cogniflow_request
 
 st.set_page_config(
-    page_title="Cogniflow Image Demo",
+    page_title="Cogniflow Image Recognition",
     page_icon="https://uploads-ssl.webflow.com/60510407e7726b268293da1c/60ca08f7a2abc9c7c79c4dac_logo_ico256x256.png",
 )
 
@@ -23,11 +23,14 @@ def _max_width_():
 _max_width_()
 
 st.title('Image Recognition')
-
 st.markdown("Powered by [Cogniflow](https://www.cogniflow.ai)")
 
 model = st.secrets["model_url"]
 api_key = st.secrets["api_key"]
+
+if not "image/classification/predict/" in model:
+    st.error("Error validating model url. Please make sure you are using an image classification model")
+    st.stop()
 
 file = st.file_uploader("Upload a picture", type=['jpg', 'png', 'jpeg'])
 
